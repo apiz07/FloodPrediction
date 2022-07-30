@@ -6,13 +6,17 @@ export class apiService {
             
         );
         let i;
-        let ChanceRain = [8];
-
+        const ChanceRain = [8];
+        let day1 
         for(i = 0; i < 7; i++){
             // response.data.daily[i].pop;
             ChanceRain[i] = Math.round(response.data.daily[i].pop*100);
+            if(i==0){
+                day1 = Math.round(response.data.daily[i].pop*100);
+            }
         }
         
-        return ChanceRain;
+        console.log("di api: " + ChanceRain[i])
+        return response
     }
 }

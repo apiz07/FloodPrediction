@@ -5,14 +5,25 @@ import {indexService} from '../API/index.service'
 import {useQuery} from 'react-query'
 
 function Weather() {
-    const {data} = useQuery(["fetchWeather"], async() => {return await indexService.weatherApi.getWeather()}, {keepPreviousData: true})
-    // console.log(data);
+
+
+    const {data} = useQuery(["fetchWeather"], async() => {return await indexService.weatherApi.getWeather()}, {keepPreviousData: false})
+    
+
+    
+
+    const testing = () => {
+        if (data){
+            console.log("dapat")
+            console.log(data.data);
+        }
+    }
     return (
     <div>
         <Navbar />
         <h1 className="containerCenter">WELCOME TO FLOOD DISASTER AID SYSTEM</h1>
         <div className='flex-container'>
-            <div>
+            {/* <div>
                 <div>{data[0]}</div>
             </div>
             <div>
@@ -32,8 +43,11 @@ function Weather() {
             </div>
             <div>
                 <div>{data[6]}</div>
-            </div>
-        </div>        
+            </div> */}
+            
+        </div>     
+
+        <button onClick={testing}>try</button>   
     </div>
   )
 }
